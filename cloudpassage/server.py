@@ -149,6 +149,41 @@ class Server(object):
         # Exceptions fire deeper if this fails.  Otherwise, return True.
         return True
 
+    def issues(self, server_id):
+        """This method retrieves the detail of a server issues. 
+
+        Args:
+            server_id (str): ID of server
+
+        Returns:
+            list: issues of the server
+        """
+
+        sanity.validate_object_id(server_id)
+        endpoint = "/v1/servers/%s/issues" % server_id
+
+        request = HttpHelper(self.session)
+        response = request.get(endpoint)
+        return response
+
+    def firewall_logs(self, server_id):
+        """This method retrieves the detail of a server firewall log. 
+
+        Args:
+            server_id (str): ID of server
+
+        Returns:
+            list: firewall log of the server
+        """
+
+        sanity.validate_object_id(server_id)
+        endpoint = "/v1/servers/%s/firewall_logs" % server_id
+
+        request = HttpHelper(self.session)
+        response = request.get(endpoint)
+        firewall_log_details = response["agent_firewall_logs"]
+        return firewall_log_details
+
     def command_details(self, server_id, command_id):
         """This method retrieves the details and status of a server command.
 
