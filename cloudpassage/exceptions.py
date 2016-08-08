@@ -19,6 +19,8 @@ class CloudPassageAuthentication(Exception):
         super(CloudPassageAuthentication, self).__init__()
         self.msg = error_msg
 
+    def __str__(self):
+        return repr(self.msg)
 
 class CloudPassageAuthorization(Exception):
     """Exception related to authorization.
@@ -36,6 +38,9 @@ class CloudPassageAuthorization(Exception):
     def __init__(self, error_msg):
         super(CloudPassageAuthorization, self).__init__()
         self.msg = error_msg
+
+    def __str__(self):
+        return repr(self.msg)
 
 
 class CloudPassageValidation(Exception):
@@ -57,6 +62,8 @@ class CloudPassageValidation(Exception):
         super(CloudPassageValidation, self).__init__()
         self.msg = error_msg
 
+    def __str__(self):
+        return repr(self.msg)
 
 class CloudPassageCollision(Exception):
     """Exception indicates a resource collision.
@@ -76,6 +83,9 @@ class CloudPassageCollision(Exception):
         super(CloudPassageCollision, self).__init__()
         self.msg = error_msg
 
+    def __str__(self):
+        return repr(self.msg)
+
 
 class CloudPassageInternalError(Exception):
     """This exception indicates an error in the Analytics Engine.
@@ -94,6 +104,8 @@ class CloudPassageInternalError(Exception):
         super(CloudPassageInternalError, self).__init__()
         self.msg = error_msg
 
+    def __str__(self):
+        return repr(self.msg)
 
 class CloudPassageResourceExistence(Exception):
     """This exception indicates that you're trying to access a
@@ -113,6 +125,8 @@ class CloudPassageResourceExistence(Exception):
         super(CloudPassageResourceExistence, self).__init__()
         self.msg = error_msg
 
+    def __str__(self):
+        return repr(self.msg)
 
 class CloudPassageGeneral(Exception):
     """This is thrown when a more specific exception type is unavailable.
@@ -130,3 +144,6 @@ class CloudPassageGeneral(Exception):
     def __init__(self, error_msg):
         super(CloudPassageGeneral, self).__init__()
         self.msg = error_msg
+
+    def __str__(self):
+        return repr(self.msg)
