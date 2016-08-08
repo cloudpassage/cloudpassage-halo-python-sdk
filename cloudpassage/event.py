@@ -25,6 +25,7 @@ class Event(object):
             "group_id",
             "server_id",
             "server_platform",
+            "critical",
             "type",
             "since",
             "until",
