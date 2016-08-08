@@ -159,7 +159,7 @@ class Scan(object):
         return response
 
     def findings(self, scan_id, findings_id):
-        """Get FIM findings details by scan and findings ID
+        """Get FIM, CSM, and SVA findings details by scan and findings ID
 
         Args:
             scan_id (str): ID of scan_id
