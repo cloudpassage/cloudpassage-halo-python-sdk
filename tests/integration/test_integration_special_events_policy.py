@@ -31,3 +31,14 @@ class TestIntegrationSpecialEventsPolicy:
         se_policy = cloudpassage.SpecialEventsPolicy(session)
         se_policy_list = se_policy.list_all()
         assert "id" in se_policy_list[0]
+
+    def test_get_details(self):
+        """This test gets the details of a special events policy in
+        your Halo account.  If you don't have any special events policies
+        configured, it will fail.
+        """
+        request = self.create_special_events_policy_obj()
+        policy_list = request.list_all()
+        target_policy_id = policy_list[0]["id"]
+        target_policy_body = request.describe(target_policy_id)
+        assert "id" in target_policy_body

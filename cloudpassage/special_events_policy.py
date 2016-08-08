@@ -28,15 +28,15 @@ class SpecialEventsPolicy(Policy):
         """Defines the pagination key for parsing paged results"""
         return SpecialEventsPolicy.policies
 
+    @classmethod
+    def policy_key(cls):
+        return SpecialEventsPolicy.policy
+
     def create(self, unimportant):
         """Not implemented for this module.  Raises exception."""
         raise NotImplementedError
 
     def delete(self, unimportant):
-        """Not implemented for this module.  Raises exception."""
-        raise NotImplementedError
-
-    def describe(self, unimportant):
         """Not implemented for this module.  Raises exception."""
         raise NotImplementedError
 
