@@ -139,6 +139,21 @@ class TestIntegrationScan:
             rejected = True
         assert rejected
 
+    def test_sam_historical_is_unsupported(self):
+        rejected = False
+        session = cloudpassage.HaloSession(key_id, secret_key,
+                                           api_host=api_hostname,
+                                           api_port=api_port)
+        scanner = cloudpassage.Scan(session)
+        server = cloudpassage.Server(session)
+        scan_type = "sam"
+        server_id = server.list_all()[0]["id"]
+        try:
+            command = scanner.last_scan_results(server_id, scan_type)
+        except cloudpassage.CloudPassageValidation:
+            rejected = True
+        assert rejected
+
     def test_scan_type_valid(self):
         valid_types = ["svm", "sva", "csm", "sca", "fim", "sam", "sv"]
         invalid_types = ["death_stare", "lids"]
