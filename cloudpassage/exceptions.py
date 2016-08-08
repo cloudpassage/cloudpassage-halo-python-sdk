@@ -57,7 +57,6 @@ class CloudPassageValidation(Exception):
         super(CloudPassageValidation, self).__init__()
         self.msg = error_msg
 
-
 class CloudPassageCollision(Exception):
     """Exception indicates a resource collision.
 

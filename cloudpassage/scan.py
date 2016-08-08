@@ -34,7 +34,6 @@ class Scan(object):
             "csm": "sca",
             "svm": "svm",
             "sva": "svm",
-            "sam": "sam",
             "fim": "fim"
         }
         self.supported_scan_status = [
