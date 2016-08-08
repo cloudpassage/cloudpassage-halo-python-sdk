@@ -72,6 +72,26 @@ class TestIntegrationServer:
             rejected = True
         assert rejected
 
+    def test_issues_404(self):
+        rejected = False 
+        request = self.build_server_object()
+        server_id = "12345"
+        try: 
+            result = request.issues(server_id)
+        except cloudpassage.CloudPassageResourceExistence:
+            rejected = True
+        assert rejected 
+        
+    def test_firewall_logs_422(self):
+        rejected = False 
+        request = self.build_server_object()
+        server_id = "12345"
+        try:
+            request.firewall_logs(server_id)
+        except cloudpassage.CloudPassageValidation:
+            rejected = True
+        assert rejected
+
     def test_command_details_404(self):
         rejected = False
         request = self.build_server_object()
