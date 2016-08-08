@@ -1,10 +1,11 @@
 """HttpHelper class.  Primary-level object, facilitates
 GET / POST / PUT / DELETE requests against API.
 """
-
+import sys
 import json
 import urlparse
 from cloudpassage.exceptions import CloudPassageValidation
+from cloudpassage.exceptions import CloudPassageGeneral
 import cloudpassage.utility as utility
 import requests
 
@@ -20,7 +21,13 @@ class HttpHelper(object):
     """
 
     def __init__(self, connection):
+        if self.python_version() < "2.7.10":
+            err_msg = "Please make sure your python version is > 2.7.10"
+            raise CloudPassageGeneral(err_msg)
         self.connection = connection
+
+    def python_version(self):
+        return sys.version.split(" ")[0]
 
     def get(self, endpoint, **kwargs):
         """This method performs a GET against Halo's API.
