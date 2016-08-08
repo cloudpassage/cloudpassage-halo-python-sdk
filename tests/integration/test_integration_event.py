@@ -46,3 +46,9 @@ class TestIntegrationEvent:
         since = datetime.datetime.utcnow() - datetime.timedelta(days=1)
         event_list = event.list_all(10, since=since, until=until)
         assert "id" in event_list[0]
+
+    def test_critical(self):
+        event = self.create_event_obj()
+        event_list = event.list_all(1, critical="true")
+        for e in event_list:
+            assert e["critical"] == True
