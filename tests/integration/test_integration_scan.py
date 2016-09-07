@@ -215,12 +215,6 @@ class TestIntegrationScan:
         command = scanner.initiate_scan(target_id, "sam")
         assert command["id"]
 
-    def test_sam_retrieve(self):
-        scanner = self.build_scan_object()
-        target_id = self.get_sam_target()
-        report = scanner.last_scan_results(target_id, "sam")
-        assert report["id"]
-
     def test_scan_history(self):
         scanner = self.build_scan_object()
         report = scanner.scan_history()

@@ -100,7 +100,6 @@ class Scan(object):
           csm  - Configuration scan (same as sca)
           svm  - Software vulnerability scan
           sva  - Software vulnerability scan (same as svm)
-          sam  - Server access management scan
           fim  - File integrity monitoring scan
 
         Returns:
