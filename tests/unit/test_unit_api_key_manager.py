@@ -3,7 +3,7 @@ import os
 import yaml
 
 
-config_file_name = "portal.yaml"
+config_file_name = "portal.yaml.local"
 tests_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
 config_file = os.path.join(tests_dir, "configs/", config_file_name)
 

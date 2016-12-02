@@ -55,7 +55,7 @@ class ApiKeyManager(object):
         self.api_hostname = "api.cloudpassage.com"
         self.key_id = None
         self.secret_key = None
-        self.api_port = None
+        self.api_port = 443
         self.config_file = None
 
         if "config_file" in kwargs:

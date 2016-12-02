@@ -17,6 +17,8 @@ if [ -z ${HALO_API_PORT} ]; then
   export HALO_API_PORT=443
 fi
 
+cat ${SOURCE_CONFIG_TEMPLATE} | envsubst > ${LOCAL_CONFIG_FILE}
+
 # If HALO_API_KEY is not set, we assume that
 # you're just doing style and unit tests.
 # So we run those and exit.
@@ -30,7 +32,6 @@ fi
 # The first case falls through if you have HALO_API_KEY
 # set, so we then run integration tests.
 
-cat ${SOURCE_CONFIG_TEMPLATE} | envsubst > ${LOCAL_CONFIG_FILE}
 echo "Running style, unit, and integration tests"
 ${BASE} ${INTEGRATION}
 RETCODE=$?

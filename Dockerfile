@@ -11,7 +11,7 @@ COPY ./ /source/
 WORKDIR /source/
 
 RUN pip install -r requirements-testing.txt && \
-    pip install .
+    pip install -e .
 
 RUN pip install codeclimate-test-reporter
 
