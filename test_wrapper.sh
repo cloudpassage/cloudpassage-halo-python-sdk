@@ -38,7 +38,9 @@ if [ ${RETCODE} != 0 ]; then
   exit ${RETCODE}
 fi
 
+ls -al
 if [-z ${CODECLIMATE_REPO_TOKEN} ]; then
+  echo here
   ${CODECLIMATE}
 fi
 
