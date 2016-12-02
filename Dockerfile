@@ -4,7 +4,7 @@ MAINTAINER toolbox@cloudpassage.com
 RUN apk add -U \
     gettext \
     python \
-    py-pip \
+    py-pip && \
     apk add --no-cache git
 
 COPY ./ /source/
