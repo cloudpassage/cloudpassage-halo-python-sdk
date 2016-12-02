@@ -2,10 +2,10 @@ FROM alpine:3.4
 MAINTAINER toolbox@cloudpassage.com
 
 RUN apk add -U \
-    git
     gettext \
     python \
-    py-pip
+    py-pip \
+    apk add --no-cache git
 
 COPY ./ /source/
 
