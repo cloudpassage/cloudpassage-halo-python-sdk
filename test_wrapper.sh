@@ -40,8 +40,8 @@ if [ ${RETCODE} != 0 ]; then
 fi
 
 ls -al
-if [-z ${CODECLIMATE_REPO_TOKEN} ]; then
-  echo here
+if [ -z ${CODECLIMATE_REPO_TOKEN} ]; then
+  echo ${CODECLIMATE}
   ${CODECLIMATE}
 fi
 
