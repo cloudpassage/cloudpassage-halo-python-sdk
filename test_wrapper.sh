@@ -41,8 +41,7 @@ if [ ${RETCODE} != 0 ]; then
 fi
 
 
-if [ -z ${CODECLIMATE_REPO_TOKEN} ]; then
-  echo ${CODECLIMATE}
+if [ ${CODECLIMATE_REPO_TOKEN} ]; then
   ${CODECLIMATE}
 fi
 
