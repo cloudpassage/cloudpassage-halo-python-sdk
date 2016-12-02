@@ -8,8 +8,6 @@ CODECLIMATE="codeclimate-test-reporter --file=/source/.coverage --debug"
 SOURCE_CONFIG_TEMPLATE="/source/tests/configs/portal.yaml"
 LOCAL_CONFIG_FILE="/source/tests/configs/portal.yaml.local"
 
-echo ${CODECLIMATE_REPO_TOKEN}
-
 if [ -z ${HALO_API_HOSTNAME} ]; then
   export HALO_API_HOSTNAME=api.cloudpassage.com
 fi
