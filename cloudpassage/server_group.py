@@ -2,7 +2,6 @@
 
 import cloudpassage.utility as utility
 import cloudpassage.sanity as sanity
-from cloudpassage.exceptions import CloudPassageValidation
 from cloudpassage.http_helper import HttpHelper
 
 
