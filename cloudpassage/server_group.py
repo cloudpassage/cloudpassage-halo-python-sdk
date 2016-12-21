@@ -74,8 +74,7 @@ class ServerGroup(object):
             fim_policy_ids (list): List of Linux FIM policies
             linux_fim_policy_ids (list): List of Linux FIM policies
             windows_fim_policy_ids (list): List of Windows FIM policies
-            linux_lids_policy_ids (list): List of Linux LIDS policy IDs
-            windows_lids_policy_ids (list): List of Windows LIDS policy IDs
+            lids_policy_ids (list): List of LIDS policy IDs
             tag (str): Server group tag-used for auto-assignment of group.
             server_events_policy (str): Special events policy IDs
             alert_profiles (list): List of alert profile IDs
