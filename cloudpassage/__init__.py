@@ -2,6 +2,7 @@
 from cloudpassage.alert_profile import AlertProfile  # noqa: F401
 from cloudpassage.api_key_manager import ApiKeyManager  # noqa: F401
 from cloudpassage.configuration_policy import ConfigurationPolicy  # noqa: F401
+from cloudpassage.cve_details import CveDetails  # noqa: F401
 from cloudpassage.fim_policy import FimPolicy  # noqa: F401
 from cloudpassage.fim_policy import FimBaseline  # noqa: F401
 from cloudpassage.event import Event  # noqa: F401
