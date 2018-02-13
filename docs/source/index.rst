@@ -21,6 +21,7 @@ Contents:
    api_key_manager
    halo_session
    http_helper
+   time_series
    server
    server_group
    configuration_policy

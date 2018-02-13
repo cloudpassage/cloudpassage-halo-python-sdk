@@ -26,13 +26,14 @@ from cloudpassage.issue import Issue  # noqa: F401
 from cloudpassage.lids_policy import LidsPolicy  # noqa: F401
 from cloudpassage.local_user_account import LocalUserAccount  # noqa: F401
 from cloudpassage.local_user_group import LocalUserGroup  # noqa: F401
+from cloudpassage.retry import Retry  # noqa: F401
 from cloudpassage.scan import CveException  # noqa: F401
 from cloudpassage.scan import Scan  # noqa: F401
 from cloudpassage.server import Server  # noqa: F401
 from cloudpassage.server_group import ServerGroup  # noqa: F401
 from cloudpassage.special_events_policy import SpecialEventsPolicy  # noqa: F401
 from cloudpassage.system_announcement import SystemAnnouncement  # noqa: F401
-from cloudpassage.retry import Retry  # noqa: F401
+from cloudpassage.time_series import TimeSeries  # noqa: F401
 import utility as init_util
 
 
