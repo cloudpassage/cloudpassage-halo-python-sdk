@@ -5,6 +5,7 @@ from cloudpassage.exceptions import CloudPassageGeneral
 from cloudpassage.exceptions import CloudPassageInternalError
 from cloudpassage.exceptions import CloudPassageResourceExistence
 from cloudpassage.exceptions import CloudPassageValidation
+from cloudpassage.exceptions import CloudPassageRateLimit
 
 
 class TestUnitExceptions:
@@ -28,6 +29,9 @@ class TestUnitExceptions:
 
     def raise_validation(self, msg):
         raise CloudPassageValidation(msg)
+
+    def raise_rate_limit(self, msg):
+        raise CloudPassageRateLimit(msg)
 
     def test_authentication(self):
         msg = 'test'
@@ -74,7 +78,6 @@ class TestUnitExceptions:
         try:
             self.raise_resource_exist(msg)
         except CloudPassageResourceExistence as e:
-            print e.args
             assert msg == e.msg
             assert str(e) == msg
 
@@ -83,5 +86,13 @@ class TestUnitExceptions:
         try:
             self.raise_validation(msg)
         except CloudPassageValidation as e:
+            assert msg == e.msg
+            assert str(e) == msg
+
+    def test_rate_limit(self):
+        msg = "test"
+        try:
+            self.raise_rate_limit(msg)
+        except CloudPassageRateLimit as e:
             assert msg == e.msg
             assert str(e) == msg

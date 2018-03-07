@@ -15,6 +15,7 @@ from cloudpassage.exceptions import CloudPassageGeneral  # noqa: F401
 from cloudpassage.exceptions import CloudPassageInternalError  # noqa: F401
 from cloudpassage.exceptions import CloudPassageResourceExistence  # noqa: F401
 from cloudpassage.exceptions import CloudPassageValidation  # noqa: F401
+from cloudpassage.exceptions import CloudPassageRateLimit  # noqa: F401
 from cloudpassage.firewall_policy import FirewallInterface  # noqa: F401
 from cloudpassage.firewall_policy import FirewallPolicy  # noqa: F401
 from cloudpassage.firewall_policy import FirewallRule  # noqa: F401
@@ -44,5 +45,5 @@ if init_util.verify_python_version(installed, minimum) is False:
     print err_msg
 
 __author__ = "CloudPassage"
-__version__ = "1.1.2"
+__version__ = "1.1.3"
 __license__ = "BSD"

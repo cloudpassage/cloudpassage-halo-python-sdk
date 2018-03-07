@@ -1,9 +1,13 @@
 Changelog
 =========
 
+v1.1.3 (2018-03-07)
+-------------------
+- CS-479 Add CloudPassageRateLimit Exception Class. [Jye Lee]
+
 
 v1.1.2 (2018-02-26)
-------
+-------------------
 - Adding tests for TimeSeries() for events, scans, and issues endpoints.
   [Ash Wilson]
 - Adding docs for TimeSeries class. [Ash Wilson]

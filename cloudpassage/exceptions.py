@@ -187,6 +187,35 @@ class CloudPassageResourceExistence(Exception):
         return str(self.msg)
 
 
+class CloudPassageRateLimit(Exception):
+    """This exception indicates that you have exceeded the allotted \
+    number of api calls per minute.
+
+    This is thrown when a HTTP response code of 429 is detected.
+
+    Args:
+        error_msg (str): Message describing the error
+
+    Keyword Args:
+        code (int): Numeric ID for error
+
+    Attributes:
+        msg (str)
+
+    """
+
+    def __init__(self, error_msg, **kwargs):
+        super(CloudPassageRateLimit, self).__init__()
+        if "code" in kwargs:
+            self.code = massage_error_code(kwargs["code"])
+            self.msg = "%d %s" % (self.code, error_msg)
+        else:
+            self.msg = error_msg
+
+    def __str__(self):
+        return str(self.msg)
+
+
 class CloudPassageGeneral(Exception):
     """This is thrown when a more specific exception type is unavailable.
 

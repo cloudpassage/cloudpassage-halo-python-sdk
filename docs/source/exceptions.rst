@@ -23,3 +23,6 @@ exceptions
 
 .. autoclass:: cloudpassage.CloudPassageValidation
    :members:
+
+.. autoclass:: cloudpassage.CloudPassageRateLimit
+   :members:

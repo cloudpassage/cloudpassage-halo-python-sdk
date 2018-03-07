@@ -11,6 +11,7 @@ from cloudpassage.exceptions import CloudPassageAuthentication
 from cloudpassage.exceptions import CloudPassageAuthorization
 from cloudpassage.exceptions import CloudPassageResourceExistence
 from cloudpassage.exceptions import CloudPassageGeneral
+from cloudpassage.exceptions import CloudPassageRateLimit
 from distutils.version import LooseVersion
 
 
@@ -151,7 +152,8 @@ def parse_status(url, resp_code, resp_text):
                         404: CloudPassageResourceExistence(resp_text, code=404,
                                                            url=url),
                         403: CloudPassageAuthorization(resp_text, code=403),
-                        422: CloudPassageValidation(resp_text, code=422)}
+                        422: CloudPassageValidation(resp_text, code=422),
+                        429: CloudPassageRateLimit(resp_text, code=429)}
         if resp_code in bad_statuses:
             return(success, bad_statuses[resp_code])
         else:
