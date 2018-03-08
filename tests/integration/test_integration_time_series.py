@@ -100,3 +100,22 @@ class TestIntegrationTimeSeries(object):
             item_counter += 1
             if item_counter > 5:
                 break
+
+    def test_time_series_iter_events_many_pages_internal_killswitch(self):
+        """Test triggering exit w/ StopIteration in TimeSeries().__iter__()"""
+        session = self.get_halo_session()
+        start_time = cloudpassage.utility.datetime_to_8601((datetime.now() -
+                                                            timedelta(30)))
+        start_url = "/v1/events"
+        item_key = "events"
+        streamer = cloudpassage.TimeSeries(session, start_time,
+                                           start_url, item_key)
+        item_counter = 0
+        item_ids = set([])
+        for item in streamer:
+            assert "id" in item
+            assert item["id"] not in item_ids
+            item_ids.add(item["id"])
+            item_counter += 1
+            if item_counter > 60:
+                streamer.stop = True  # This triggers a StopIteration

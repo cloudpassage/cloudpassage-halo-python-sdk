@@ -18,6 +18,10 @@ class TimeSeries(object):
         start_url(str): Path from URL, no hostname and no URL-encoded params.
         item_key(str): Top-level key, below which is a list of target items.
         params(dict): Parameters for URL, which will be URL-encoded.
+
+    Attributes:
+        stop(bool): Set to ``False`` by default.  When set to ``True``, the
+        ``__iter__()`` will raise StopIteration, effecting a clean exit.
     """
     def __init__(self, session, start_time, start_url, item_key, params={}):
         self.url = start_url
@@ -33,11 +37,14 @@ class TimeSeries(object):
         self.params["since"] = start_time
         self.params["per_page"] = self.page_size
         self.verify_start_url(start_url)
+        self.stop = False
         return
 
     def __iter__(self):
         """Yields one item from a time-series query against Halo. Forever."""
         while True:
+            if self.stop:
+                raise StopIteration
             for item in self.get_next_batch():
                 yield item
 
