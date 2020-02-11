@@ -25,7 +25,7 @@ class Issue(HaloEndpoint):
         """Return endpoint for API requests."""
         return "/v{}/{}".format(self.endpoint_version, self.objects_name)
 
-    def list_all(self, **kwargs):
+    def list_all(self, max_pages = 20, **kwargs):
         """Returns a list of all issues.
 
         This query is limited to 20 pages of 100 items,
@@ -63,7 +63,6 @@ class Issue(HaloEndpoint):
         """
 
         session = self.session
-        max_pages = 20
         request = HttpHelper(session)
         params = utility.sanitize_url_params(kwargs)
         issues = request.get_paginated(self.endpoint(), self.objects_name,
