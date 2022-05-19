@@ -15,13 +15,16 @@ class ContainerPackage(HaloEndpoint):
         endpoint_version (int): Endpoint version override.
     """
 
-    object_name = "software_package"
-    objects_name = "software_packages"
-    default_endpoint_version = 1
+    # object_name = "software_package" # deprecated
+    # objects_name = "software_packages" # deprecated
+    # default_endpoint_version = 1 # deprecated
+    object_name = "package"
+    objects_name = "packages"
+    default_endpoint_version = 2
 
-    def endpoint(self):
+    def endpoint(self, image_id):
         """Return endpoint for API requests."""
-        return "/v{}/{}".format(self.endpoint_version, self.objects_name)
+        return "/v{}/container_images/{}/{}".format(self.endpoint_version, image_id, self.objects_name)
 
     def pagination_key(self):
         """Return the pagination key for parsing paged results."""

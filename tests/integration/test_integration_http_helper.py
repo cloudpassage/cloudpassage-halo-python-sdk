@@ -118,9 +118,9 @@ class TestIntegrationGetPaginated:
     def test_get_next_page_path(self):
         body = {u'count': 6961,
                 u'issues': [],
-                u'pagination': {u'next': u'https://api.cloudpassage.com/v1/issues?critical=true&page=2&per_page=100&sort_by=last_seen_at.desc&state=active%2Cinactive%2Cmissing%2Cretired&status=active%2Cresolved'}}  # NOQA
+                u'pagination': {u'next': u'https://api.cloudpassage.com/v3/issues?critical=true&page=2&per_page=100&sort_by=last_seen_at.desc&state=active%2Cinactive%2Cmissing%2Cretired&status=active%2Cresolved'}}  # NOQA
         result = cloudpassage.HttpHelper.get_next_page_path(body)
-        assert result == "/v1/issues?critical=true&page=2&per_page=100&sort_by=last_seen_at.desc&state=active%2Cinactive%2Cmissing%2Cretired&status=active%2Cresolved"  # NOQA
+        assert result == "/v3/issues?critical=true&page=2&per_page=100&sort_by=last_seen_at.desc&state=active%2Cinactive%2Cmissing%2Cretired&status=active%2Cresolved"  # NOQA
 
 
 class TestIntegrationPost:

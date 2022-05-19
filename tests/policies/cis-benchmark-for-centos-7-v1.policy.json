@@ -4,7 +4,7 @@
     "description": "This policy helps you to verify the security of servers that are hardened according to the consensus guidance put forth by the Center for Internet Security (CIS) document \"CIS CentOS Linux 7 Benchmark v1.1.0 04-02-2015\". The policy detects deviations in your servers' configurations from the Benchmark specifications. You may wish to explicitly harden your servers by following the Benchmark suggestions before scanning with this policy. \r\n\r\n Several rules in this policy are by default deactivated, for one of the following reasons: \r\n - A rule includes configuration checks that Halo does not perform at this time. \r\n - A rule includes configuration checks that look for dangerous settings that, if set, would prevent remote access to the server. \r\n\r\n You can activate those rules if and when your server configurations make them appropriate, or when new Halo checks become available.",
     "platform": "linux",
     "template": true,
-    "url": "https://portal.cloudpassage.com/v1/policies/f7459be01c5711e5b8dd05741f3c0727",
+    "url": "https://portal.cloudpassage.com/v2/policies/f7459be01c5711e5b8dd05741f3c0727",
     "id": "f7459be01c5711e5b8dd05741f3c0727",
     "used_by": [],
     "rules": [

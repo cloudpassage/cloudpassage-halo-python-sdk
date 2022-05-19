@@ -19,7 +19,8 @@ class Issue(HaloEndpoint):
     """
     object_name = "issue"
     objects_name = "issues"
-    default_endpoint_version = 1
+    # default_endpoint_version = 1 # deprecated
+    default_endpoint_version = 3
 
     def endpoint(self):
         """Return endpoint for API requests."""

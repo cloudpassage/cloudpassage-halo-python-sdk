@@ -15,9 +15,13 @@ class ContainerImage(HaloEndpoint):
         endpoint_version (int): Endpoint version override.
     """
 
-    object_name = "image"
-    objects_name = "images"
-    default_endpoint_version = 1
+    # object_name = "image" # deprecated
+    # objects_name = "images" # deprecated
+    # default_endpoint_version = 1 # deprecated
+    
+    object_name = "container_image"
+    objects_name = "container_images"
+    default_endpoint_version = 2
 
     def endpoint(self):
         """Return endpoint for API requests."""

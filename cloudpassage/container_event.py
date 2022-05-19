@@ -15,13 +15,16 @@ class ContainerEvent(HaloEndpoint):
         endpoint_version (int): Endpoint version override.
     """
 
-    object_name = "container_event"
-    objects_name = "container_events"
-    default_endpoint_version = 1
+    # object_name = "container_event" # deprecated
+    # objects_name = "container_events" # deprecated
+    # default_endpoint_version = 1 # deprecated
+    object_name = "event"
+    objects_name = "events"
+    default_endpoint_version = 2
 
-    def endpoint(self):
+    def endpoint(self, container_id):
         """Return endpoint for API requests."""
-        return "/v{}/{}".format(self.endpoint_version, self.objects_name)
+        return "/v{}/containers/{}/{}".format(self.endpoint_version, container_id, self.objects_name)
 
     def pagination_key(self):
         """Return the pagination key for parsing paged results."""

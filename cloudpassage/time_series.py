@@ -50,7 +50,7 @@ class TimeSeries(object):
             will return, effecting a clean exit.
     """
 
-    allowed_urls = ["/v1/events", "/v1/scans", "/v1/issues"]
+    allowed_urls = ["/v1/events", "/v1/scans", "/v3/issues"]
 
     def __init__(self, session, start_time, start_url, item_key, params={}):
         self.url = start_url

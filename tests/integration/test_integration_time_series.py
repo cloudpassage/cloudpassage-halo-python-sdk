@@ -79,7 +79,7 @@ class TestIntegrationTimeSeries(object):
         session = self.get_halo_session()
         start_time = utility.datetime_to_8601((datetime.now() -
                                                timedelta(30)))
-        start_url = "/v1/issues"
+        start_url = "/v3/issues"
         item_key = "issues"
         streamer = cloudpassage.TimeSeries(session, start_time,
                                            start_url, item_key)

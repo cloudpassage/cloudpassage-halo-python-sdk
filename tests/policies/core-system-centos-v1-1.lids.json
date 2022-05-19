@@ -7,7 +7,7 @@
     "template": true,
     "retired": false,
     "used_by": [],
-    "url": "https://portal.cloudpassage.com/v1/lids_policies/cec1b0dc695f11e5941a13ee8436bb31",
+    "url": "https://portal.cloudpassage.com/v2/policies/cec1b0dc695f11e5941a13ee8436bb31",
     "rules": [
       {
         "name": "User ID (UID) was modified",

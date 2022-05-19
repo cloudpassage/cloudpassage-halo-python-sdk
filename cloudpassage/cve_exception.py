@@ -16,9 +16,12 @@ class CveExceptions(HaloEndpoint):
         endpoint_version (int): Endpoint version override.
     """
 
-    object_name = "cve_exception"
-    objects_name = "cve_exceptions"
-    default_endpoint_version = 1
+    # object_name = "cve_exception" # deprecated
+    # objects_name = "cve_exceptions"  # deprecated
+    # default_endpoint_version = 1 # deprecated
+    object_name = "exception"
+    objects_name = "exceptions"
+    default_endpoint_version = 2
 
     def endpoint(self):
         """Return the endpoint for API requests."""
@@ -111,9 +114,12 @@ class CveException(HaloEndpoint):
 
     """
 
-    object_name = "cve_exception"
-    objects_name = "cve_exceptions"
-    default_endpoint_version = 1
+    # object_name = "cve_exception" # deprecated
+    # objects_name = "cve_exceptions" # deprecated
+    # default_endpoint_version = 1 # deprecated
+    object_name = "exception"
+    objects_name = "exceptions"
+    default_endpoint_version = 2
 
     def endpoint(self):
         """Return the endpoint for API requests."""

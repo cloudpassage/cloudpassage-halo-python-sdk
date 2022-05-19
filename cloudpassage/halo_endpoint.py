@@ -8,7 +8,8 @@ from .http_helper import HttpHelper
 class HaloEndpoint(object):
     """Base class inherited by other specific HaloEndpoint classes."""
 
-    default_endpoint_version = 1
+    # default_endpoint_version = 1 # deprecated
+    default_endpoint_version = 2
 
     def __init__(self, session, **kwargs):
         self.session = session
