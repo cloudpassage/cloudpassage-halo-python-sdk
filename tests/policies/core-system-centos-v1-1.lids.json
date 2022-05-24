@@ -1,9 +1,10 @@
 {
-  "lids_policy": {
+  "policy": {
     "id": "cec1b0dc695f11e5941a13ee8436bb31",
     "name": "CPAPI TEST Core System (CentOS) v1.1",
     "description": "This is a LIDS policy for CentOS Linux servers.\nThis policy can be used with CentOS 5, CentOS 6, and CentOS 7.\nRecommended for: General system security, PCI-DSS, HIPAA, SANS 20, SOC 2",
     "platform": "linux",
+    "module": "lids",
     "template": true,
     "retired": false,
     "used_by": [],

@@ -1,8 +1,9 @@
 {
-  "fim_policy": {
+  "policy": {
     "name": "CPAPI TEST Core System Files (CentOS) v1",
     "description": "This is a FIM policy for CentOS Linux servers and will work with CentOS 5, CentOS 6, and CentOS 7. This policy includes the standard CentOS directories that should be monitored for security and compliance purposes.\nRecommended for: General system security, PCI-DSS, HIPAA, SANS 20, SOC 2",
     "platform": "linux",
+    "module": "fim",
     "template": true,
     "rules": [
       {

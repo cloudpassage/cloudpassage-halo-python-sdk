@@ -52,7 +52,8 @@ class ServerGroup(HaloEndpoint):
 
         """
         sanity.validate_object_id(group_id)
-        endpoint = "/v1/groups/{}/servers".format(group_id)
+        # endpoint = "/v1/groups/{}/servers".format(group_id) # Invalid Endpoint
+        endpoint = "/v1/servers?group_id={}".format(group_id)
         request = HttpHelper(self.session)
         return request.get(endpoint)["servers"]
 

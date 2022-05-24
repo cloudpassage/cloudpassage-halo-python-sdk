@@ -37,9 +37,10 @@ class CveExceptions(HaloEndpoint):
         """Return the pagination key for parsing paged results."""
         return cls.objects_name
 
+    # deprecated
+    '''
     def create(self, package_name, package_version, scope="all", scope_id=''):
         """This method allows user to create CVE exceptions.
-
         Args:
             package_name (str): The name of the vulnerable
                                 package to be excepted.
@@ -49,7 +50,6 @@ class CveExceptions(HaloEndpoint):
             scope_id (str): If you pass the value server as scope, this field
                 will include server ID. If you pass the value group as scope,
                 this field will include group ID.
-
         Returns:
             str: ID of the newly-created cve exception
         """
@@ -75,7 +75,40 @@ class CveExceptions(HaloEndpoint):
         request = HttpHelper(self.session)
         response = request.post(endpoint, body)
         return response["cve_exception"]["id"]
+    '''
 
+    def create(self, package_name, package_version, target_type):
+        """This method allows user to create CVE exceptions.
+
+        Args:
+            package_name (str): The name of the vulnerable
+                                package to be excepted.
+            package_version (str): The version number of the
+                                   vulnerable package.
+            target_type (str): Possible values are server, container_image.
+            
+
+        Returns:
+            str: ID of the newly-created cve exception
+        """
+
+        params = {
+            "target_type": target_type,
+            "status": "active",
+            "definition": {
+                "package_name": package_name,
+                "package_version": package_version,
+            }
+            
+        }
+
+        endpoint = self.endpoint()
+        
+        body = {"exception": params}
+        request = HttpHelper(self.session)
+        response = request.post(endpoint, body)
+        return response["exception"]["id"]
+    
     def update(self, exception_id, **kwargs):
         """ Update CVE Exceptions.
 
@@ -95,7 +128,8 @@ class CveExceptions(HaloEndpoint):
         """
 
         endpoint = "{}/{}".format(self.endpoint(), exception_id)
-        body = {"cve_exception": kwargs}
+        # body = {"cve_exception": kwargs} # deprecated
+        body = {"exception": kwargs}
         request = HttpHelper(self.session)
         response = request.put(endpoint, body)
         return response

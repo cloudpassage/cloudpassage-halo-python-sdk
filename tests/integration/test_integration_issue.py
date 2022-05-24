@@ -46,7 +46,7 @@ class TestIntegrationIssue:
         assert issue_list is not None
         target_issue_id = issue_list[0]["id"]
         issue_details = i.describe(target_issue_id)
-        assert issue_details["id"] == target_issue_id
+        assert issue_details["issue"]["id"] == target_issue_id
 
     def test_get_issue_details_404(self):
         request = self.build_issue_object()
@@ -76,7 +76,9 @@ class TestIntegrationIssue:
         assert result is not None
         for issue in result:
             assert issue["status"] == "resolved"
-
+    
+    # Deprecated method
+    '''
     def test_get_issue_by_agent_id(self):
         """This test requires at least one active issue in your Halo
         account.  If you have no active issues, this test will fail.
@@ -91,6 +93,22 @@ class TestIntegrationIssue:
 
         for issue in issues:
             assert issue["agent_id"] == target_agent_id
+    '''
+
+    def test_get_issue_by_id(self):
+        """This test requires at least one active issue in your Halo
+        account.  If you have no active issues, this test will fail.
+        """
+        i = self.build_issue_object()
+        issue_list = i.list_all()
+        assert issue_list is not None
+
+        target_id = issue_list[0]["id"]
+        issues = i.list_all(id=target_id)
+        assert issues is not None
+
+        for issue in issues:
+            assert issue["id"] == target_id
 
     def test_get_issue_by_group_id(self):
         """This test requires at least one active issue in your Halo

@@ -56,14 +56,14 @@ class Utility(object):
         else:
             print("Policy type must be str or dict, not %s!" % type(policy))
         try:
-            derived_type = list(working_pol.items())[0][0]
-            if derived_type == "fim_policy":
+            derived_module_type = list(working_pol.items())[0][1]["module"]
+            if derived_module_type == "fim":
                 return_body["policy_type"] = "FIM"
-            if derived_type == "policy":
+            if derived_module_type == "csm":
                 return_body["policy_type"] = "CSM"
-            if derived_type == "lids_policy":
+            if derived_module_type == "lids":
                 return_body["policy_type"] = "LIDS"
-            if derived_type == "firewall_policy":
+            if derived_module_type == "fw":
                 return_body["policy_type"] = "Firewall"
         except AttributeError:
             pass

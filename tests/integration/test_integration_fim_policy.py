@@ -76,8 +76,10 @@ class TestIntegrationFimPolicy:
             policy_body = policy_file_object.read()
         policy_id = request.create(policy_body)
         policy_update = json.loads(policy_body)
-        policy_update["fim_policy"]["name"] = newname
-        policy_update["fim_policy"]["id"] = policy_id
+        # policy_update["fim_policy"]["name"] = newname # deprecated
+        # policy_update["fim_policy"]["id"] = policy_id # deprecated
+        policy_update["policy"]["name"] = newname
+        policy_update["policy"]["id"] = policy_id
         request.update(policy_update)
         request.delete(policy_id)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
@@ -109,7 +111,7 @@ class TestIntegrationFimBaseline:
         response = request.list_all()
         target_id = None
         for policy in response:
-            if (policy["active"] is True and policy["platform"] == "linux"):
+            if (policy["status"] == "active" and policy["platform"] == "linux"):
                 target_id = policy["id"]
                 break
         assert target_id is not None

@@ -77,8 +77,10 @@ class TestIntgrationLidsPolicy:
         policy_id = request.create(policy_body)
         policy_update = json.loads(policy_body)
         self.remove_policy_by_name(newname)
-        policy_update["lids_policy"]["name"] = newname
-        policy_update["lids_policy"]["id"] = policy_id
+        # policy_update["lids_policy"]["name"] = newname # deprecated
+        # policy_update["lids_policy"]["id"] = policy_id # deprecated
+        policy_update["policy"]["name"] = newname
+        policy_update["policy"]["id"] = policy_id
         request.update(policy_update)
         request.delete(policy_id)
         try:

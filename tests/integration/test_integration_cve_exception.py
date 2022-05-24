@@ -53,16 +53,20 @@ class TestIntegrationCveExceptions:
         ce_obj = self.build_ce_object()
         srv_obj = self.build_server_object()
         srvs = srv_obj.list_all()
-        target_srv_id = srvs[0]["id"]
+        # target_srv_id = srvs[0]["id"] # deprecated
         package_name = "apport"
         package_version = "2.14.1-0ubuntu3.11"
-        scope = "server"
-        ce_id = ce_obj.create(package_name, package_version,
-                              scope, target_srv_id)
-        ce_obj.update(ce_id, scope="all")
+        target_type = "server"
+        # scope = "server" # deprecated
+        # ce_id = ce_obj.create(package_name, package_version, target_type, target_srv_id) # deprecated
+        ce_id = ce_obj.create(package_name, package_version, target_type)
+        # ce_obj.update(ce_id, scope="all") # deprecated 
+        ce_obj.update(ce_id, target_type="server")
         delete_return = ce_obj.delete(ce_id)
         assert delete_return is None
 
+    # deprecated
+    '''
     def test_scope_id_is_strings(self):
         request = self.build_ce_object()
         package_name = "apport"
@@ -70,3 +74,4 @@ class TestIntegrationCveExceptions:
         with pytest.raises(cloudpassage.CloudPassageValidation) as e:
             request.create(package_name, package_version, "server", "#$123dfe")
         assert "valid scope id" in str(e)
+    '''

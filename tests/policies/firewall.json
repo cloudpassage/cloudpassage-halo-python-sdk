@@ -3,6 +3,7 @@
     "name" : "CPAPI TEST",
     "description" : "AUTOMATED TEST",
     "platform" : "linux",
+    "module": "fw",
     "ignore_forwarding_rules": true,
     "firewall_rules" : [
       {
