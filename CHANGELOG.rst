@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v1.6.3 (2022-05-23)
+------
+
+Changes
+~~~~~~~
+- Upgrade all deprecated CloudPassage HALO Endpoints. [Thomas Miller]
+
 
 v1.6.1
 ------
