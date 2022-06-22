@@ -1,6 +1,6 @@
 ARG PY_VER=2.7.10
 FROM docker.io/halotools/python_tester:${PY_VER}
-LABEL maintainer="toolbox@cloudpassage.com"
+MAINTAINER toolbox@cloudpassage.com
 
 COPY ./ /source/
 

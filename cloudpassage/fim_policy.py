@@ -3,7 +3,6 @@
 import cloudpassage.sanity as sanity
 from .halo_endpoint import HaloEndpoint
 from .http_helper import HttpHelper
-from .utility import Utility as utility
 
 
 class FimPolicy(HaloEndpoint):
@@ -27,16 +26,11 @@ class FimPolicy(HaloEndpoint):
     # default_endpoint_version = 1 # deprecated
     object_name = "policy"
     objects_name = "policies"
-    module_name = "fim"
     default_endpoint_version = 2
 
     def endpoint(self):
         """Return endpoint for API requests."""
         return "/v{}/{}".format(self.endpoint_version, self.objects_name)
-
-    def fim_endpoint(self):
-        """Return endpoint for API requests."""
-        return "/v{}/{}?module={}".format(self.endpoint_version, self.objects_name, self.module_name)
 
     @classmethod
     def pagination_key(cls):
@@ -47,24 +41,6 @@ class FimPolicy(HaloEndpoint):
     def object_key(cls):
         """Defines the key used to pull the policy from the json document"""
         return cls.object_name
-
-    def list_all(self, **kwargs):
-        """Lists all policies of module fim.
-
-        Returns:
-            list: List all policies of module fim (represented as dictionary-type objects)
-
-        Note:
-            This method supports query parameters via keyword arguments.
-
-        """
-
-        request = HttpHelper(self.session)
-        params = utility.sanitize_url_params(kwargs)
-        response = request.get_paginated(self.fim_endpoint(),
-                                         self.pagination_key(), self.max_pages,
-                                         params=params)
-        return response
 
 
 class FimBaseline(HaloEndpoint):
@@ -131,7 +107,7 @@ class FimBaseline(HaloEndpoint):
             server_id (str): ID of server to use for generating baseline
 
         Keyword Args:
-            expire_days (int): Number of days from today for expiration of baseline
+            expires (int): Number of days from today for expiration of baseline
             comment (str): Guess.
 
         Returns:
@@ -143,10 +119,10 @@ class FimBaseline(HaloEndpoint):
         request = HttpHelper(self.session)
         endpoint = self.endpoint(fim_policy_id)
         request_body = {"baseline": {"server_id": server_id,
-                                     "expire_days": None,
+                                     "expires": None,
                                      "comment": None}}
-        if "expire_days" in kwargs:
-            request_body["baseline"]["expire_days"] = kwargs["expire_days"]
+        if "expires" in kwargs:
+            request_body["baseline"]["expires"] = kwargs["expires"]
         if "comment" in kwargs:
             request_body["baseline"]["comment"] = kwargs["comment"]
         response = request.post(endpoint, request_body)

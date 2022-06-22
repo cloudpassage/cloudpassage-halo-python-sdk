@@ -53,7 +53,7 @@ class TestIntegrationIssue:
         bad_issue_id = "91ea293e36dc11e9805c3d99d1900b44"
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             request.describe(bad_issue_id)
-        assert str("issue not found") in str(e)
+        assert bad_issue_id in str(e)
 
     def test_issue_list_actives(self):
         """This test requires at least one active issue in your Halo
