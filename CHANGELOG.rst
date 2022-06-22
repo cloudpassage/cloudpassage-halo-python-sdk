@@ -1,16 +1,20 @@
 Changelog
 =========
 
-v1.6.3 (2022-06-22)
+v1.6.4 (2022-06-22)
+-------------------
+
+Fix
+~~~
+- Fixed policy list failures. [Thomas Miller]
+
+
+v1.6.3 (2022-05-23)
 -------------------
 
 Changes
 ~~~~~~~
 - Upgrade all deprecated CloudPassage HALO Endpoints. [Thomas Miller]
-
-Fix
-~~~
-- Fixed policy list failures. [Thomas Miller]
 
 
 v1.6.1
