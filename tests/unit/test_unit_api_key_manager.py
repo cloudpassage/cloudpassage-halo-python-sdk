@@ -30,7 +30,7 @@ class TestUnitApiKeyManager:
     def test_keys_from_file(self):
         session = cloudpassage.ApiKeyManager(config_file=config_file)
         with open(config_file, 'r') as config_file_obj:
-            file_set_vars = yaml.load(config_file_obj)["defaults"]
+            file_set_vars = yaml.safe_load(config_file_obj)["defaults"]
         assert session.key_id == file_set_vars["key_id"]
         assert session.secret_key == file_set_vars["secret_key"]
         assert session.api_hostname == file_set_vars["api_hostname"]

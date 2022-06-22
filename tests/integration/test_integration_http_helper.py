@@ -33,7 +33,7 @@ class TestIntegrationGet:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             req.get(endpoint)
-        assert '404' in str(e)
+        assert '404' in str(e.value)
 
     def test_get_rekey(self):
         endpoint = "/v1/servers"
@@ -60,7 +60,7 @@ class TestIntegrationGetPaginated:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             req.get_paginated(endpoint, key, pages)
-        assert '404' in str(e)
+        assert '404' in str(e.value)
 
     def test_get_paginated_rekey(self):
         endpoint = "/v1/events"
@@ -135,7 +135,7 @@ class TestIntegrationPost:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             req.post(endpoint, post_data)
-        assert '404' in str(e)
+        assert '404' in str(e.value)
 
     def test_post_bad_payload(self):
         endpoint = "/v1/groups"
@@ -148,7 +148,7 @@ class TestIntegrationPost:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageValidation) as e:
             req.post(endpoint, post_data)
-        assert '400' in str(e)
+        assert '400' in str(e.value)
 
     def test_post_rekey(self):
         endpoint = nonexistent_url
@@ -160,7 +160,7 @@ class TestIntegrationPost:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             req.post(endpoint, {"nonexist": "nothing"})
-        assert '404' in str(e)
+        assert '404' in str(e.value)
 
 
 class TestIntegrationPut:
@@ -175,7 +175,7 @@ class TestIntegrationPut:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             req.put(endpoint, put_data)
-        assert '404' in str(e)
+        assert '404' in str(e.value)
 
     def test_post_bad_payload(self):
         endpoint = "/v1/groups"
@@ -188,7 +188,7 @@ class TestIntegrationPut:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             req.put(endpoint, put_data)
-        assert '404' in str(e)
+        assert '404' in str(e.value)
 
     def test_put_rekey(self):
         body = {"server":
@@ -202,7 +202,7 @@ class TestIntegrationPut:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             req.put(endpoint, body)
-        assert '404' in str(e)
+        assert '404' in str(e.value)
 
 
 class TestIntegrationDelete:
@@ -216,7 +216,7 @@ class TestIntegrationDelete:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             req.delete(endpoint)
-        assert '404' in str(e)
+        assert '404' in str(e.value)
 
     def test_delete_rekey(self):
         endpoint = "/v1/servers/123455432"
@@ -228,4 +228,4 @@ class TestIntegrationDelete:
         req = cloudpassage.HttpHelper(session)
         with pytest.raises(cloudpassage.CloudPassageResourceExistence) as e:
             req.delete(endpoint)
-        assert '404' in str(e)
+        assert '404' in str(e.value)
